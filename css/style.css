@@ -248,19 +248,100 @@ footer {
 }
 
 /* ===============================
-   RESPONSIVE
+   RESPONSIVE TABLET
 ================================ */
-@media (max-width: 900px) {
+@media (max-width: 768px) {
+
+    body {
+        padding-top: 120px;
+    }
+
     .navbar {
+        padding: 15px 20px;
         flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 15px;
     }
 
+    .hero-content {
+        left: 5%;
+        right: 5%;
+        max-width: 100%;
+        text-align: center;
+    }
+
     .hero-content h2 {
-        font-size: 40px;
+        font-size: 36px;
+    }
+
+    .hero-content p {
+        font-size: 18px;
     }
 
     section {
         padding: 80px 30px;
+    }
+
+    .section-title {
+        font-size: 32px;
+    }
+
+    .car-card img {
+        height: 200px;
+    }
+}
+
+/* ===============================
+   RESPONSIVE MOBILE
+================================ */
+@media (max-width: 480px) {
+
+    body {
+        padding-top: 140px;
+    }
+
+    .logo {
+        font-size: 22px;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+    }
+
+    .hero-content h2 {
+        font-size: 28px;
+        line-height: 1.2;
+    }
+
+    .hero-content p {
+        font-size: 16px;
+    }
+
+    section {
+        padding: 60px 20px;
+    }
+
+    .section-title {
+        font-size: 26px;
+    }
+
+    .btn {
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+
+    .car-card img {
+        height: 180px;
+    }
+
+    footer {
+        font-size: 13px;
+        padding: 30px 15px;
     }
 }

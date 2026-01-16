@@ -9,7 +9,7 @@ function revealOnScroll() {
         if (elementTop < windowHeight - 100) {
             el.classList.add('show');
         }
-    });
+    }); 
 }
 
 window.addEventListener('scroll', revealOnScroll);
