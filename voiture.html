@@ -19,33 +19,99 @@
     </ul>
 </header>
 
-<section>
+<!-- Info-bar -->
+<div class="info-bar">
+    <span>🚗 Livraison internationale</span>
+    <span>⭐ Véhicules certifiés</span>
+    <span>🔒 Paiement sécurisé</span>
+</div>
+
+<section class="reveal">
     <h2 class="section-title">Notre collection</h2>
 
     <div class="cars-list">
         <div class="car-card">
-            <img src="images/car1.jpeg">
+            <span class="badge">Nouveau</span>
+            <img src="images/car1.jpeg" alt="Mercedes Classe E">
             <h3>Mercedes Classe E</h3>
             <p>52 000 €</p>
+            <button class="btn btn-reserver">Réserver</button>
+            <button class="btn">Demander un devis</button>
         </div>
 
         <div class="car-card">
-            <img src="images/car2.jpeg">
+            <span class="badge">Best Seller</span>
+            <img src="images/car2.jpeg" alt="BMW Série 7">
             <h3>BMW Série 7</h3>
             <p>78 000 €</p>
+            <button class="btn btn-reserver">Réserver</button>
+            <button class="btn">Demander un devis</button>
         </div>
 
         <div class="car-card">
-            <img src="images/car3.jpeg">
+            <span class="badge">Nouveau</span>
+            <img src="images/car3.jpeg" alt="Porsche Panamera">
             <h3>Porsche Panamera</h3>
             <p>95 000 €</p>
+            <button class="btn btn-reserver">Réserver</button>
+            <button class="btn">Demander un devis</button>
         </div>
     </div>
 </section>
 
+<!-- Filtres -->
+<div class="filters reveal">
+  <select id="filter-marque" class="form-input">
+    <option>Toutes marques</option>
+    <option>Mercedes</option>
+    <option>BMW</option>
+    <option>Porsche</option>
+  </select>
+
+  <select id="filter-type" class="form-input">
+    <option>Tous types</option>
+    <option>SUV</option>
+    <option>Sport</option>
+    <option>Berline</option>
+  </select>
+
+  <input type="range" id="filter-prix" min="0" max="100000" class="form-input">
+</div>
+
 <footer>
-    © 2026 AutoMarket — Luxury Cars
+  <div class="footer-socials">
+    <a href="#">Facebook</a>
+    <a href="#">Instagram</a>
+    <a href="#">WhatsApp</a>
+  </div>
+  <div class="footer-links">
+    <a href="index.html">Accueil</a>
+    <a href="voiture.html">Voitures</a>
+    <a href="vente.html">Vente</a>
+    <a href="contact.html">Contact</a>
+    <a href="location.html">Location</a>
+  </div>
+  <p>&copy; <span id="year"></span> AutoMarket. Tous droits réservés.</p>
 </footer>
+
+<script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    function revealOnScroll() {
+        reveals.forEach(el => {
+            const windowHeight = window.innerHeight;
+            const elementTop = el.getBoundingClientRect().top;
+            if (elementTop < windowHeight - 100) {
+                el.classList.add('show');
+            }
+        });
+    }
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+
+    // Année dynamique
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>

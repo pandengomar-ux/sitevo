@@ -19,7 +19,14 @@
     </ul>
 </header>
 
-<section>
+<!-- Info-bar -->
+<div class="info-bar">
+    <span>🚗 Livraison internationale</span>
+    <span>⭐ Véhicules certifiés</span>
+    <span>🔒 Paiement sécurisé</span>
+</div>
+
+<section class="reveal">
     <h2 class="section-title">Service de vente</h2>
     <p class="text-center">
         Nous vous accompagnons dans l’achat de véhicules premium
@@ -27,9 +34,66 @@
     </p>
 </section>
 
+<section class="reveal">
+    <form id="vente-form">
+        <input type="text" placeholder="Marque" required class="form-input">
+        <input type="number" placeholder="Année" required class="form-input">
+        <input type="number" placeholder="Prix estimé" required class="form-input">
+        <input type="file" accept="image/*" class="form-input">
+        <button type="submit" class="btn">Envoyer</button>
+    </form>
+</section>
+
+<!-- Pourquoi nous choisir -->
+<section class="why-choose reveal">
+    <div>
+        <span>✔️</span> Véhicules contrôlés
+    </div>
+    <div>
+        <span>✔️</span> Support 24/7
+    </div>
+    <div>
+        <span>✔️</span> Prix transparents
+    </div>
+</section>
+
 <footer>
-    © 2026 AutoMarket — Luxury Cars
+  <div class="socials">
+    <a href="#">Facebook</a>
+    <a href="#">Instagram</a>
+    <a href="#">WhatsApp</a>
+  </div>
+  <div class="footer-links">
+    <a href="index.html">Accueil</a>
+    <a href="voiture.html">Voitures</a>
+    <a href="vente.html">Vente</a>
+    <a href="contact.html">Contact</a>
+    <a href="location.html">Location</a>
+  </div>
+  <p class="copyright">&copy; <span id="year"></span> AutoMarket. Tous droits réservés.</p>
 </footer>
+
+<!-- JS pour scroll reveal et année dynamique -->
+<script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+
+    function revealOnScroll() {
+        reveals.forEach(el => {
+            const windowHeight = window.innerHeight;
+            const elementTop = el.getBoundingClientRect().top;
+            if (elementTop < windowHeight - 100) {
+                el.classList.add('show');
+            }
+        }); 
+    }
+
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+
+    // Année dynamique
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>

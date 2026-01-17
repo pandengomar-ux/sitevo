@@ -19,17 +19,108 @@
     </ul>
 </header>
 
-<section>
-    <h2 class="section-title">Service de location</h2>
+<!-- Info-bar -->
+<div class="info-bar">
+    <span>🚗 Livraison internationale</span>
+    <span>⭐ Véhicules certifiés</span>
+    <span>🔒 Paiement sécurisé</span>
+</div>
+
+<section class="reveal">
+    <h2 class="section-title">Nos voitures à louer</h2>
     <p class="text-center">
-        Location courte et longue durée de véhicules de luxe,
-        avec assurance et assistance incluses.
+        Sélectionnez votre voiture, vos dates, et obtenez le prix instantané.
     </p>
+
+    <div class="cars-list">
+        <!-- Exemple voiture 1 -->
+        <div class="car-card">
+            <span class="badge disponible">Disponible</span>
+            <img src="images/car1.jpeg" alt="Mercedes Classe E">
+            <h3>Mercedes Classe E</h3>
+            <p>Prix par jour : 150 €</p>
+            <label>Date début :</label>
+            <input type="date" class="date-start">
+            <label>Date fin :</label>
+            <input type="date" class="date-end">
+            <p class="prix-total">Total : 0 €</p>
+            <button class="btn btn-reserver">Réserver</button>
+        </div>
+
+        <!-- Exemple voiture 2 -->
+        <div class="car-card">
+            <span class="badge indisponible">Indisponible</span>
+            <img src="images/car2.jpeg" alt="BMW Série 7">
+            <h3>BMW Série 7</h3>
+            <p>Prix par jour : 200 €</p>
+            <label>Date début :</label>
+            <input type="date" class="date-start">
+            <label>Date fin :</label>
+            <input type="date" class="date-end">
+            <p class="prix-total">Total : 0 €</p>
+            <button class="btn btn-reserver" disabled>Réserver</button>
+        </div>
+    </div>
 </section>
 
 <footer>
-    © 2026 AutoMarket — Luxury Cars
+    <div class="footer-socials">
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+        <a href="#">WhatsApp</a>
+    </div>
+    <div class="footer-links">
+        <a href="index.html">Accueil</a>
+        <a href="voiture.html">Voitures</a>
+        <a href="vente.html">Vente</a>
+        <a href="contact.html">Contact</a>
+        <a href="location.html">Location</a>
+    </div>
+    <p>&copy; <span id="year"></span> AutoMarket. Tous droits réservés.</p>
 </footer>
+
+<script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    function revealOnScroll() {
+        reveals.forEach(el => {
+            const windowHeight = window.innerHeight;
+            const elementTop = el.getBoundingClientRect().top;
+            if (elementTop < windowHeight - 100) {
+                el.classList.add('show');
+            }
+        });
+    }
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+
+    // Année dynamique
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Calcul automatique du prix de location
+    const cars = document.querySelectorAll('.car-card');
+    cars.forEach(car => {
+        const startInput = car.querySelector('.date-start');
+        const endInput = car.querySelector('.date-end');
+        const totalDisplay = car.querySelector('.prix-total');
+        const pricePerDay = parseInt(car.querySelector('p').textContent.replace(/\D/g,''));
+
+        function calculateTotal() {
+            const start = new Date(startInput.value);
+            const end = new Date(endInput.value);
+            if (start && end && end > start) {
+                const diffTime = end - start;
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                totalDisplay.textContent = `Total : ${diffDays * pricePerDay} €`;
+            } else {
+                totalDisplay.textContent = "Total : 0 €";
+            }
+        }
+
+        startInput.addEventListener('change', calculateTotal);
+        endInput.addEventListener('change', calculateTotal);
+    });
+</script>
 
 </body>
 </html>
